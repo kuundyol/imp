@@ -1,0 +1,50 @@
+Discover Github Action
+link: http://school.pages.takima.io/devops-resources/ch2-discover-github-actions-tp/
+
+Goals
+Good Practice
+Do not forget to document what you do along the steps.
+Create an appropriate file structure, 1 folder per image.
+
+Target Application
+Complete pipeline workflow for testing and delivering your software application.
+We are going to use different useful tools to build your application, test it automatically, and check the code quality at the same time.
+link: https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
+
+
+======================Git Init=======================
+First, we need to push our project (from TP1) to the git repository.
+
+#Signed in to git
+
+#Created new git repository https://github.com/kuundyol/imp
+
+#Opened git bash on my computer
+
+#Moved to the root folder of my project: Users\igors\Documents\efrei\imp\tp1
+
+#Used the init command to initialize the local directory as a Git repository. By default, the initial branch is called master.
+$ git init
+
+#Added the files in your new local repository. This stages them for the first commit.
+$ git add .
+
+#Commited the files that you've staged in your local repository.
+$ git commit -m "Initial commit"
+
+#At the top of your repository on GitHub.com's Quick Setup page, clicked to copy the remote repository URL.
+https://github.com/kuundyol/imp.git
+
+#In the Command prompt, added the URL for the remote repository where your local repository will be pushed.
+$ git remote add origin https://github.com/kuundyol/imp.git
+	#Sets the new remote
+$ git remote -v
+	#Verifies the new remote URL
+
+#Pushed the changes in your local repository to GitHub.com.
+$ git push origin master
+	#Pushes the changes in your local repository up to the remote repository you specified as the origin
+	#My branch be default is called 'master'
+
+#Went to the git repository on the browser and saw that all the files are there. Success!
+
