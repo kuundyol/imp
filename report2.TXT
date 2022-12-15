@@ -48,3 +48,10 @@ $ git push origin master
 
 #Went to the git repository on the browser and saw that all the files are there. Success!
 
+
+
+
+
+
+=====================Set up GitHub Actions======================
+#Created empty main.yaml file in the root directory.
