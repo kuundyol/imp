@@ -58,7 +58,7 @@ jobs:
          # relative path to the place where source code with Dockerfile is located
          context: ./simple-api-student-main
          # Note: tags has to be all lower-case
-         tags:  ${{secrets.kuundyol}}/my-database
+         tags:  kuundyol/my-database/backend
 
      - name: Build image and push database
        uses: docker/build-push-action@v3
@@ -66,7 +66,7 @@ jobs:
          # relative path to the place where source code with Dockerfile is located
          context: ./database
          # Note: tags has to be all lower-case
-         tags:  ${{secrets.kuundyol}}/my-database
+         tags:  kuundyol/my-database/database
          # DO the same for database
 
      - name: Build image and push httpd
@@ -75,5 +75,5 @@ jobs:
          # relative path to the place where source code with Dockerfile is located
          context: ./http
          # Note: tags has to be all lower-case
-         tags:  ${{secrets.kuundyol}}/my-database
+         tags:  kuundyol/my-database/httpd
          # DO the same for httpd
