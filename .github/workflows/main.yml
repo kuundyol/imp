@@ -46,12 +46,24 @@ jobs:
        uses: docker/build-push-action@v3
        with:
          # relative path to the place where source code with Dockerfile is located
-         context: ./simple-api
+         context: ./simple-api-student-main
          # Note: tags has to be all lower-case
          tags:  ${{secrets.kuundyol}}/tp-devops/simple-api
 
      - name: Build image and push database
+       uses: docker/build-push-action@v3
+       with:
+         # relative path to the place where source code with Dockerfile is located
+         context: ./database
+         # Note: tags has to be all lower-case
+         tags:  ${{secrets.kuundyol}}/tp-devops/database
          # DO the same for database
 
      - name: Build image and push httpd
-       # DO the same for httpd
+       uses: docker/build-push-action@v3
+       with:
+         # relative path to the place where source code with Dockerfile is located
+         context: ./http
+         # Note: tags has to be all lower-case
+         tags:  ${{secrets.kuundyol}}/tp-devops/http
+         # DO the same for httpd
