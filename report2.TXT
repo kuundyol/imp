@@ -54,4 +54,72 @@ $ git push origin master
 
 
 =====================Set up GitHub Actions======================
-#Created empty main.yaml file in the root directory.
+#I do not have maven installed on my machine so I could not perform manually on my machine the maven verification.
+
+#Created empty main.yml file in the root directory.
+
+#Moved it to the ./.github/workflows new directory
+
+#Filled it with the following content:
+name: CI devops 2022
+on:
+  #to begin you want to launch this job in main and develop
+  push:
+    branches: master
+  pull_request:
+
+jobs:
+  test-backend: 
+    runs-on: ubuntu-22.04
+    steps:
+     #checkout your github code using actions/checkout@v2.5.0
+      - uses: actions/checkout@v2.5.0
+
+     #do the same with another action (actions/setup-java@v3) that enable to setup jdk 17
+      - name: Set up JDK 17
+      - uses: actions/setup-java@v3
+
+     #finally build your app with the latest command
+      - name: Build and test with Maven
+        run: mvn clean verify
+
+#Added edited files to commit
+$ git add .
+
+#Commited the files
+$ git commit -m "Added workflow file"
+
+#Pushed the commit
+$git push origing master
+
+#The Action is triggered and running. It gave an error: 
+> every step must define a `uses` or `run` key
+
+#I checked the main.yml file and found a syntax mistake. Fixed it. Tried again with the new commit "Report tp1 finished"
+
+#Got an error again:
+> Node.js 12 actions are deprecated. For more information see: https://github.blog/changelog/2022-09-22-github-actions-all-actions-will-begin-running-on-node16-instead-of-node12/. Please update the following actions to use Node.js 16: actions/checkout@v2.5.0
+
+#To fix this, specified the java action step:
+- name: Set up JDK 17
+  uses: actions/setup-java@v3
+  with:
+    java-version: '17'
+    distribution: 'temurin'
+    cache: maven
+
+#Pushed on git again with commit "workflow 1.1". This fixed the problem. But I got an error in the next step:
+> The goal you specified requires a project to execute but there is no POM in this directory (/home/runner/work/imp/imp). Please verify you invoked Maven from the correct directory.
+
+#To fix this, specified the path to the pom.xml file:
+- name: Build and test with Maven
+  run: mvn clean verify --file ./simple-api-student-main/pom.xml
+
+#Pushed on git again with commit "workflow 1.2". The action passed. Succes!!
+
+
+
+
+
+
+First steps into the CD World
