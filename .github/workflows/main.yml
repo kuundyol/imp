@@ -77,3 +77,14 @@ jobs:
          # Note: tags has to be all lower-case
          tags:  kuundyol/my-database/httpd
          # DO the same for httpd
+
+
+      - name: Build image and push backend
+       uses: docker/build-push-action@v3
+       with:
+         # relative path to the place where source code with Dockerfile is located
+         context: ./simple-api-student-main
+         # Note: tags has to be all lower-case
+         tags:  kuundyol/my-database:simple-api
+         # build on feature branches, push only on main branch (I have master branch)
+         push: ${{ github.ref == 'refs/heads/master' }}
