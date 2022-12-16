@@ -79,7 +79,7 @@ jobs:
          # DO the same for httpd
 
 
-      - name: Build image and push backend
+     - name: Build image and push backend
        uses: docker/build-push-action@v3
        with:
          # relative path to the place where source code with Dockerfile is located
