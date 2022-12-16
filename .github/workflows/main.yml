@@ -22,7 +22,9 @@ jobs:
 
      #finally build your app with the latest command
       - name: Build and test with Maven
-        run: mvn clean verify --file ./simple-api-student-main/pom.xml
+        # run: mvn clean verify --file ./simple-api-student-main/pom.xml
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=kuundyol -Dsonar.organization=kuundyol -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=b0aee3fdeec4cc391f38d1fac3b2107c7267f1c2  --file ./simple-api-student-main/pom.xml
+
       
       
       # - name: Login to DockerHub
